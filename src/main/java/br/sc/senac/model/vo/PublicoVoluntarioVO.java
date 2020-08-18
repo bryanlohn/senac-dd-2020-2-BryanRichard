@@ -2,17 +2,17 @@ package br.sc.senac.model.vo;
 
 import java.time.LocalDate;
 
-public class PublicoVoluntario extends Pessoa {
+public class PublicoVoluntarioVO extends PessoaVO {
 	
 	private char voluntario;
 
 	
 // CONSTRUTORES
-	public PublicoVoluntario() {
+	public PublicoVoluntarioVO() {
 		super();
 	}
 
-	public PublicoVoluntario(String nomeCompleto, char sexo, LocalDate dataNascimento, String cpf) {
+	public PublicoVoluntarioVO(String nomeCompleto, char sexo, LocalDate dataNascimento, String cpf) {
 		super(nomeCompleto, sexo, dataNascimento, cpf);
 	}
 

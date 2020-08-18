@@ -2,7 +2,7 @@ package br.sc.senac.model.vo;
 
 import java.time.LocalDate;
 
-public class Pessoa {
+public class PessoaVO {
 	
 	private String nomeCompleto;
 	private char sexo;
@@ -10,7 +10,7 @@ public class Pessoa {
 	private String cpf;
 	
 	// CONSTRUTORES
-	public Pessoa(String nomeCompleto, char sexo, LocalDate dataNascimento, String cpf) {
+	public PessoaVO(String nomeCompleto, char sexo, LocalDate dataNascimento, String cpf) {
 		super();
 		this.nomeCompleto = nomeCompleto;
 		this.sexo = sexo;
@@ -18,7 +18,7 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public Pessoa() {
+	public PessoaVO() {
 		super();
 	}
 

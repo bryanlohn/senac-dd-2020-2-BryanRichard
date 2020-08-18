@@ -4,69 +4,66 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Vacina {
+public class VacinaVO {
 
 	DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private int idVacina;
 	private LocalDate dataInicioPesquisa;
 	private String paisOrigem;
 	private int estagioPesquisa;
-	private String nomePesquisador;
+	private PesquisadorVO pesquisadorVO;
 	
-	//Construtores
-	public Vacina(DateTimeFormatter dataFormatter, LocalDate dataInicioPesquisa, String paisOrigem, int estagioPesquisa,
-			String nomePesquisador) {
+	//CONSTRUTORES
+	public VacinaVO(DateTimeFormatter dataFormatter, int idVacina, LocalDate dataInicioPesquisa, String paisOrigem,
+			int estagioPesquisa, PesquisadorVO pesquisadorVO) {
 		super();
 		this.dataFormatter = dataFormatter;
+		this.idVacina = idVacina;
 		this.dataInicioPesquisa = dataInicioPesquisa;
 		this.paisOrigem = paisOrigem;
 		this.estagioPesquisa = estagioPesquisa;
-		this.nomePesquisador = nomePesquisador;
+		this.pesquisadorVO = pesquisadorVO;
 	}
-	
-	public Vacina() {
+	public VacinaVO() {
 		super();
 	}
-
 	
 	// GETTERS AND SETTERS
 	public DateTimeFormatter getDataFormatter() {
 		return dataFormatter;
 	}
-
 	public void setDataFormatter(DateTimeFormatter dataFormatter) {
 		this.dataFormatter = dataFormatter;
 	}
-
+	public int getIdVacina() {
+		return idVacina;
+	}
+	public void setIdVacina(int idVacina) {
+		this.idVacina = idVacina;
+	}
 	public LocalDate getDataInicioPesquisa() {
 		return dataInicioPesquisa;
 	}
-
 	public void setDataInicioPesquisa(LocalDate dataInicioPesquisa) {
 		this.dataInicioPesquisa = dataInicioPesquisa;
 	}
-
 	public String getPaisOrigem() {
 		return paisOrigem;
 	}
-
 	public void setPaisOrigem(String paisOrigem) {
 		this.paisOrigem = paisOrigem;
 	}
-
 	public int getEstagioPesquisa() {
 		return estagioPesquisa;
 	}
-
 	public void setEstagioPesquisa(int estagioPesquisa) {
 		this.estagioPesquisa = estagioPesquisa;
 	}
-
-	public String getNomePesquisador() {
-		return nomePesquisador;
+	public PesquisadorVO getPesquisadorVO() {
+		return pesquisadorVO;
 	}
-
-	public void setNomePesquisador(String nomePesquisador) {
-		this.nomePesquisador = nomePesquisador;
+	public void setPesquisadorVO(PesquisadorVO pesquisadorVO) {
+		this.pesquisadorVO = pesquisadorVO;
 	}
 	
 	

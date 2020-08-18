@@ -2,17 +2,17 @@ package br.sc.senac.model.vo;
 
 import java.time.LocalDate;
 
-public class Pesquisador extends Pessoa {
+public class PesquisadorVO extends PessoaVO {
 	
 	private String instituicao;
 
 	
 //CONSTRUTORES
-	public Pesquisador() {
+	public PesquisadorVO() {
 		super();
 	}
 
-	public Pesquisador(String nomeCompleto, char sexo, LocalDate dataNascimento, String cpf) {
+	public PesquisadorVO(String nomeCompleto, char sexo, LocalDate dataNascimento, String cpf) {
 		super(nomeCompleto, sexo, dataNascimento, cpf);
 	}
 
