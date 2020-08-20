@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 public class PublicoVoluntarioVO extends PessoaVO {
 	
-	private char voluntario;
+	private boolean voluntario;
 
 	
-// CONSTRUTORES
+	//construtores
 	public PublicoVoluntarioVO() {
 		super();
 	}
@@ -17,14 +17,14 @@ public class PublicoVoluntarioVO extends PessoaVO {
 	}
 
 	
-//GETTERS AND SETTERS
-	public char getVoluntario() {
+	//getters and setters
+	public boolean isVoluntario() {
 		return voluntario;
 	}
 
-	public void setVoluntario(char voluntario) {
+	public void setVoluntario(boolean voluntario) {
 		this.voluntario = voluntario;
 	}
-	
+
 	
 }
