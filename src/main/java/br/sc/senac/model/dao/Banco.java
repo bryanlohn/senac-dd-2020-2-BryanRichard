@@ -14,6 +14,7 @@ public class Banco {
 	private static final String CONEXAO = "jdbc:mysql://localhost:3306/" + BANCODADOS;
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
+	public static final int CODIGO_RETORNO_SUCESSO = 1;
 	
 	public static Connection getConnection(){
 		try {
@@ -95,6 +96,17 @@ public class Banco {
 		} catch (SQLException e) {
 			System.out.println("Problema no fechamento do ResultSet");
 			System.out.println("Erro: " + e.getMessage());
+		}
+	}
+
+	public static PreparedStatement getPreparedStatementWithGeneratedKeys(Connection conn, String sql) {
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			return stmt;
+		} catch (Exception e) {
+			System.out.println("Erro ao obter o PreparedStatement.");
+			System.out.println("Erro: " + e.getMessage());
+		return null;
 		}
 	}
 }

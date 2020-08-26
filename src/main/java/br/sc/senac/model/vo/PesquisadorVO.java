@@ -8,16 +8,21 @@ public class PesquisadorVO extends PessoaVO {
 
 	
 //CONSTRUTORES
+	
 	public PesquisadorVO() {
 		super();
 	}
 
-	public PesquisadorVO(String nomeCompleto, char sexo, LocalDate dataNascimento, String cpf) {
-		super(nomeCompleto, sexo, dataNascimento, cpf);
+	
+	public PesquisadorVO(int id, String nomeCompleto, String sexo, String dataNascimento, String cpf) {
+		super(id, nomeCompleto, sexo, dataNascimento, cpf);
 	}
 
-	
-//GETTERS AND SETTERS
+
+
+
+
+	//GETTERS AND SETTERS
 	public String getInstituicao() {
 		return instituicao;
 	}

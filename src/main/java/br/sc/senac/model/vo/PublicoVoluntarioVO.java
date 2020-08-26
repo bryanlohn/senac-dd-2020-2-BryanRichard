@@ -4,27 +4,26 @@ import java.time.LocalDate;
 
 public class PublicoVoluntarioVO extends PessoaVO {
 	
-	private boolean voluntario;
+	private String voluntario;
 
-	
-	//construtores
 	public PublicoVoluntarioVO() {
 		super();
 	}
 
-	public PublicoVoluntarioVO(String nomeCompleto, char sexo, LocalDate dataNascimento, String cpf) {
-		super(nomeCompleto, sexo, dataNascimento, cpf);
+	public PublicoVoluntarioVO(int id, String nomeCompleto, String sexo, String dataNascimento, String cpf) {
+		super(id, nomeCompleto, sexo, dataNascimento, cpf);
 	}
 
-	
-	//getters and setters
-	public boolean isVoluntario() {
+	public String getVoluntario() {
 		return voluntario;
 	}
 
-	public void setVoluntario(boolean voluntario) {
+	public void setVoluntario(String voluntario) {
 		this.voluntario = voluntario;
 	}
+
+	
+	//construtores
 
 	
 }

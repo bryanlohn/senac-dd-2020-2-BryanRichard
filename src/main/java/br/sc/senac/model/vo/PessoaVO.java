@@ -2,61 +2,60 @@ package br.sc.senac.model.vo;
 
 import java.time.LocalDate;
 
-public class PessoaVO {
+public abstract class PessoaVO {
 	
+	private int id;
 	private String nomeCompleto;
-	private char sexo;
-	private LocalDate dataNascimento;
+	private String sexo;
+	private String dataNascimento;
 	private String cpf;
-	
-	// CONSTRUTORES
-	public PessoaVO(String nomeCompleto, char sexo, LocalDate dataNascimento, String cpf) {
+	public PessoaVO(int id, String nomeCompleto, String sexo, String dataNascimento, String cpf) {
 		super();
+		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
 	}
-
 	public PessoaVO() {
 		super();
 	}
-
-	
-	//GETTERS AND SETTERS
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
-
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
 	}
-
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-
-	public LocalDate getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
-
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-
 	public String getCpf() {
 		return cpf;
 	}
-
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	
+	// CONSTRUTORES
 	
 	
 	
+
+	
+
 }
