@@ -1,20 +1,19 @@
 package br.sc.senac.model.vo;
 
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class VacinaVO {
 
 	DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	private int idVacina;
-	private LocalDate dataInicioPesquisa;
+	private String dataInicioPesquisa;
 	private String paisOrigem;
 	private int estagioPesquisa;
 	private PesquisadorVO pesquisadorVO;
 	
 	//CONSTRUTORES
-	public VacinaVO(DateTimeFormatter dataFormatter, int idVacina, LocalDate dataInicioPesquisa, String paisOrigem,
+	public VacinaVO(DateTimeFormatter dataFormatter, int idVacina, String dataInicioPesquisa, String paisOrigem,
 			int estagioPesquisa, PesquisadorVO pesquisadorVO) {
 		super();
 		this.dataFormatter = dataFormatter;
@@ -41,10 +40,10 @@ public class VacinaVO {
 	public void setIdVacina(int idVacina) {
 		this.idVacina = idVacina;
 	}
-	public LocalDate getDataInicioPesquisa() {
+	public String getDataInicioPesquisa() {
 		return dataInicioPesquisa;
 	}
-	public void setDataInicioPesquisa(LocalDate dataInicioPesquisa) {
+	public void setDataInicioPesquisa(String dataInicioPesquisa) {
 		this.dataInicioPesquisa = dataInicioPesquisa;
 	}
 	public String getPaisOrigem() {
