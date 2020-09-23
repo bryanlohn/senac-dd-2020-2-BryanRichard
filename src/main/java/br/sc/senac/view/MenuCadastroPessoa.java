@@ -13,10 +13,12 @@ import javax.swing.JOptionPane;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Panel;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -105,6 +107,8 @@ public class MenuCadastroPessoa extends JFrame {
 		JLabel lblVoluntrio = new JLabel("Volunt\u00E1rio:");
 		lblVoluntrio.setBounds(23, 242, 104, 14);
 		contentPane.add(lblVoluntrio);
+		
+	
 		
 		checkPesquisador = new JCheckBox("Pesquisador: ");
 		checkPesquisador.addActionListener(new ActionListener() {
