@@ -20,9 +20,9 @@ import javax.swing.JButton;
 public class MenuCadastroVacina extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtPaisOrigemVacina;
+	private JTextField txtDataInicioPesquisa;
+	private JTextField txtNomePesquisador;
 
 	/**
 	 * Launch the application.
@@ -57,48 +57,48 @@ public class MenuCadastroVacina extends JFrame {
 		lblNewLabel.setBounds(10, 11, 414, 36);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Pa\u00EDs de Origem da Vacina: ");
-		lblNewLabel_1.setBounds(12, 122, 171, 14);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblPaisOrigemVacina = new JLabel("Pa\u00EDs de Origem da Vacina: ");
+		lblPaisOrigemVacina.setBounds(12, 122, 171, 14);
+		contentPane.add(lblPaisOrigemVacina);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 137, 149, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtPaisOrigemVacina = new JTextField();
+		txtPaisOrigemVacina.setBounds(10, 137, 149, 20);
+		contentPane.add(txtPaisOrigemVacina);
+		txtPaisOrigemVacina.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Est\u00E1gio da Pesquisa: ");
-		lblNewLabel_2.setBounds(12, 168, 171, 14);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblEstagioPesquisa = new JLabel("Est\u00E1gio da Pesquisa: ");
+		lblEstagioPesquisa.setBounds(12, 168, 171, 14);
+		contentPane.add(lblEstagioPesquisa);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1-inicial", "2-testes", "3-aplica\u00E7\u00E3o em massa"}));
-		comboBox.setBounds(9, 184, 147, 20);
-		contentPane.add(comboBox);
+		JComboBox cboxEstagioPesquisa = new JComboBox();
+		cboxEstagioPesquisa.setModel(new DefaultComboBoxModel(new String[] {"1-inicial", "2-testes", "3-aplica\u00E7\u00E3o em massa"}));
+		cboxEstagioPesquisa.setBounds(9, 184, 147, 20);
+		contentPane.add(cboxEstagioPesquisa);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("Data de in\u00EDcio da pesquisa: ");
-		lblNewLabel_1_2.setBounds(12, 215, 171, 14);
-		contentPane.add(lblNewLabel_1_2);
+		JLabel lblDataInicioPesquisa = new JLabel("Data de in\u00EDcio da pesquisa: ");
+		lblDataInicioPesquisa.setBounds(12, 215, 171, 14);
+		contentPane.add(lblDataInicioPesquisa);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(10, 230, 149, 20);
-		contentPane.add(textField_2);
+		txtDataInicioPesquisa = new JTextField();
+		txtDataInicioPesquisa.setColumns(10);
+		txtDataInicioPesquisa.setBounds(10, 230, 149, 20);
+		contentPane.add(txtDataInicioPesquisa);
 		
-		JLabel lblNewLabel_1_2_1 = new JLabel("Nome do Pesquisador:  ");
-		lblNewLabel_1_2_1.setBounds(12, 83, 147, 14);
-		contentPane.add(lblNewLabel_1_2_1);
+		JLabel lblNomePesquisador = new JLabel("Nome do Pesquisador:  ");
+		lblNomePesquisador.setBounds(12, 83, 147, 14);
+		contentPane.add(lblNomePesquisador);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(10, 98, 149, 20);
-		contentPane.add(textField_3);
+		txtNomePesquisador = new JTextField();
+		txtNomePesquisador.setColumns(10);
+		txtNomePesquisador.setBounds(10, 98, 149, 20);
+		contentPane.add(txtNomePesquisador);
 		
-		JButton btnNewButton = new JButton("Cadastrar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(195, 367, 98, 26);
-		contentPane.add(btnNewButton);
+		btnCadastrar.setBounds(195, 367, 98, 26);
+		contentPane.add(btnCadastrar);
 	}
 }
