@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -21,7 +25,6 @@ public class MenuCadastroVacina extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtPaisOrigemVacina;
-	private JTextField txtDataInicioPesquisa;
 	private JTextField txtNomePesquisador;
 
 	/**
@@ -69,6 +72,18 @@ public class MenuCadastroVacina extends JFrame {
 		JLabel lblEstagioPesquisa = new JLabel("Est\u00E1gio da Pesquisa: ");
 		lblEstagioPesquisa.setBounds(12, 168, 171, 14);
 		contentPane.add(lblEstagioPesquisa);
+
+		DatePickerSettings dateSettings = new DatePickerSettings();
+        dateSettings.setAllowKeyboardEditing(false);
+        dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
+
+        final DatePicker dataInicio = new DatePicker(dateSettings);
+        dataInicio.getComponentToggleCalendarButton().addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        	}
+        });
+        dataInicio.setBounds(10, 230, 183, 26);
+        getContentPane().add(dataInicio);
 		
 		JComboBox cboxEstagioPesquisa = new JComboBox();
 		cboxEstagioPesquisa.setModel(new DefaultComboBoxModel(new String[] {"1-inicial", "2-testes", "3-aplica\u00E7\u00E3o em massa"}));
@@ -78,11 +93,6 @@ public class MenuCadastroVacina extends JFrame {
 		JLabel lblDataInicioPesquisa = new JLabel("Data de in\u00EDcio da pesquisa: ");
 		lblDataInicioPesquisa.setBounds(12, 215, 171, 14);
 		contentPane.add(lblDataInicioPesquisa);
-		
-		txtDataInicioPesquisa = new JTextField();
-		txtDataInicioPesquisa.setColumns(10);
-		txtDataInicioPesquisa.setBounds(10, 230, 149, 20);
-		contentPane.add(txtDataInicioPesquisa);
 		
 		JLabel lblNomePesquisador = new JLabel("Nome do Pesquisador:  ");
 		lblNomePesquisador.setBounds(12, 83, 147, 14);

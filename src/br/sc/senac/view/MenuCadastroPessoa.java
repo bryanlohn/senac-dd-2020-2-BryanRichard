@@ -7,11 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
+
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Panel;
@@ -20,13 +24,16 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.UIManager;
 
 public class MenuCadastroPessoa extends JFrame {
 
@@ -37,11 +44,17 @@ public class MenuCadastroPessoa extends JFrame {
 	private JTextField txtInstituicao;
 	private JCheckBox checkPesquisador;
 	private JLabel lblInstituicao;
+	private String txtNomeV;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -56,12 +69,13 @@ public class MenuCadastroPessoa extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public MenuCadastroPessoa() {
+	public MenuCadastroPessoa() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 474);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -71,7 +85,7 @@ public class MenuCadastroPessoa extends JFrame {
 		lblInstituicao.setBounds(23, 314, 104, 14);
 		contentPane.add(lblInstituicao);
 		
-		JLabel lblTituloCadastroPesquisador = DefaultComponentFactory.getInstance().createTitle("Cadastro de Pessoa");
+		JLabel lblTituloCadastroPesquisador = new JLabel("Cadastro de Pessoa");
 		lblTituloCadastroPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTituloCadastroPesquisador.setBounds(125, 11, 183, 25);
 		contentPane.add(lblTituloCadastroPesquisador);
@@ -89,7 +103,7 @@ public class MenuCadastroPessoa extends JFrame {
 		contentPane.add(lblDataNascimento);
 		
 		JLabel lblSexo = new JLabel("Sexo: ");
-		lblSexo.setBounds(23, 197, 46, 14);
+		lblSexo.setBounds(24, 202, 46, 14);
 		contentPane.add(lblSexo);
 		
 		JRadioButton rdbtnSimVoluntario = new JRadioButton("Sim");
@@ -128,33 +142,61 @@ public class MenuCadastroPessoa extends JFrame {
 		checkPesquisador.setBounds(23, 284, 104, 23);
 		contentPane.add(checkPesquisador);
 		
+		
 		txtNome = new JTextField();
-		txtNome.setBounds(23, 78, 86, 20);
+		txtNome.setBounds(23, 78, 200, 23);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
-		txtCpf = new JTextField();
+		/*txtNomeV = txtNome;
+		if(txtNome.getText().length() < 3)
+		    throw new Exception("Nome com menos de 3 caracteres, por favor insira novamente o nome."); // Exception específica da sua aplicação.*/
+		
+		
+		/*txtCpf = new JTextField();
 		txtCpf.setColumns(10);
 		txtCpf.setBounds(23, 123, 86, 20);
-		contentPane.add(txtCpf);
+		contentPane.add(txtCpf);*/
 		
-		txtDataNascimento = new JTextField();
-		txtDataNascimento.setColumns(10);
-		txtDataNascimento.setBounds(23, 167, 86, 20);
-		contentPane.add(txtDataNascimento);
+		MaskFormatter mascaraCpf;
+        try {
+            mascaraCpf = new MaskFormatter("###.###.###-##");
+            JFormattedTextField txtCpf = new JFormattedTextField(mascaraCpf);
+            txtCpf.setText("");
+            txtCpf.setBounds(23, 123, 200, 23);
+            contentPane.add(txtCpf);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao inserir cpf\nErro: " + e.getMessage());
+        }
+		
+		DatePickerSettings dateSettings = new DatePickerSettings();
+        dateSettings.setAllowKeyboardEditing(false);
+        dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
+
+        final DatePicker dataNascimento = new DatePicker(dateSettings);
+        dataNascimento.getComponentToggleCalendarButton().setBounds(162, 0, 31, 23);
+        dataNascimento.getComponentDateTextField().setBounds(0, 0, 159, 23);
+        dataNascimento.getComponentToggleCalendarButton().addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        	}
+        });
+        dataNascimento.setBounds(23, 168, 200, 23);
+        getContentPane().add(dataNascimento);
+        dataNascimento.setLayout(null);
+		
 		
 		txtInstituicao = new JTextField();
 		txtInstituicao.setEnabled(false);
 		txtInstituicao.setColumns(10);
-		txtInstituicao.setBounds(23, 339, 86, 20);
+		txtInstituicao.setBounds(23, 339, 200, 23);
 		contentPane.add(txtInstituicao);
 		
 		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
-		rdbtnMasculino.setBounds(23, 212, 91, 23);
+		rdbtnMasculino.setBounds(24, 217, 91, 23);
 		contentPane.add(rdbtnMasculino);
 		
 		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
-		rdbtnFeminino.setBounds(117, 212, 91, 23);
+		rdbtnFeminino.setBounds(118, 217, 91, 23);
 		contentPane.add(rdbtnFeminino);
 		
 		ButtonGroup group = new ButtonGroup();
@@ -166,7 +208,9 @@ public class MenuCadastroPessoa extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnSalvar.setBounds(181, 402, 89, 23);
+		btnSalvar.setBounds(179, 385, 100, 33);
 		contentPane.add(btnSalvar);
+		
+		
 	}
 }
