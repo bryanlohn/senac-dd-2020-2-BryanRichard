@@ -16,17 +16,16 @@ public class VacinaDAO  {
 	public VacinaVO inserir(VacinaVO vacinaVO) {
 Connection conn = Banco.getConnection();
 		
-		String sql = "INSERT INTO VACINA (IDPESQUISADOR, DATA_INICIO_PESQUISA, PAIS_ORIGEM, ESTAGIO_PESQUISA, NOME_PESQUISADOR) "
-				+ "VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO VACINA (DATA_INICIO_PESQUISA, PAIS_ORIGEM, ESTAGIO_PESQUISA, NOME_PESQUISADOR) "
+				+ "VALUES (?,?,?,?)";
 		
 		PreparedStatement query = Banco.getPreparedStatement (conn, sql);
 		
 		try {
-			query.setInt(1, vacinaVO.getPesquisadorVO().getId());
-			query.setString(2, vacinaVO.getDataInicioPesquisa());
-			query.setString(3, vacinaVO.getPaisOrigem());
-			query.setInt(4, vacinaVO.getEstagioPesquisa());
-			query.setString(5, vacinaVO.getPesquisadorVO().getNomeCompleto());
+			query.setString(1, vacinaVO.getDataInicioPesquisa());
+			query.setString(2, vacinaVO.getPaisOrigem());
+			query.setString(3, vacinaVO.getEstagioPesquisa());
+			query.setString(4, vacinaVO.getPesquisadorVO());
 			
 			int codigoRetorno = query.executeUpdate();
 			
@@ -45,7 +44,7 @@ Connection conn = Banco.getConnection();
 	
 	public boolean alterar(VacinaVO vacinaVO) {
 		String sql = " UPDATE VACINA "
-				+ " SET IDPESQUISADOR=?, DATA_INICIO_PESQUISA=?, PAIS_ORIGEM=?, ESTAGIO_PESQUISA=?, NOME_PESQUISADOR=? " 
+				+ " SET DATA_INICIO_PESQUISA=?, PAIS_ORIGEM=?, ESTAGIO_PESQUISA=?, NOME_PESQUISADOR=? " 
 				+ " WHERE IDVACINA=? ";
 		
 		boolean alterou = false;
@@ -53,12 +52,11 @@ Connection conn = Banco.getConnection();
 		//Exemplo usando try-with-resources (similar ao bloco finally)
 		try (Connection conexao = Banco.getConnection();
 			PreparedStatement query = Banco.getPreparedStatement(conexao, sql);) {
-			query.setInt(1, vacinaVO.getPesquisadorVO().getId());
-			query.setString(2, vacinaVO.getDataInicioPesquisa());
-			query.setString(3, vacinaVO.getPaisOrigem());
-			query.setInt(4, vacinaVO.getEstagioPesquisa());
-			query.setString(5, vacinaVO.getPesquisadorVO().getNomeCompleto());
-			query.setInt(6, vacinaVO.getIdVacina());
+			query.setString(1, vacinaVO.getDataInicioPesquisa());
+			query.setString(2, vacinaVO.getPaisOrigem());
+			query.setString(3, vacinaVO.getEstagioPesquisa());
+			query.setString(4, vacinaVO.getPesquisadorVO());
+			query.setInt(5, vacinaVO.getIdVacina());
 			
 			int codigoRetorno = query.executeUpdate();
 			alterou = (codigoRetorno == Banco.CODIGO_RETORNO_SUCESSO);
@@ -144,7 +142,8 @@ Connection conn = Banco.getConnection();
 		vacinaBuscada.setIdVacina(conjuntoResultante.getInt("IDVACINA"));
 		vacinaBuscada.setDataInicioPesquisa(conjuntoResultante.getString("DATA_INICIO_PESQUISA"));
 		vacinaBuscada.setPaisOrigem(conjuntoResultante.getString("PAIS_ORIGEM"));
-		vacinaBuscada.setEstagioPesquisa(conjuntoResultante.getInt("ESTAGIO_PESQUISA"));
+		vacinaBuscada.setEstagioPesquisa(conjuntoResultante.getString("ESTAGIO_PESQUISA"));
+		vacinaBuscada.setPesquisadorVO(conjuntoResultante.getString("NOME_PESQUISADOR"));
 		
 		/*DATA_INICIO_PESQUISA, PAIS_ORIGEM, ESTAGIO_PESQUISA, NOME_PESQUISADOR */
 		return vacinaBuscada;

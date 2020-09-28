@@ -10,7 +10,11 @@ import javax.swing.border.EmptyBorder;
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 
+import br.sc.senac.controller.ControladorVacina;
+import br.sc.senac.model.vo.VacinaVO;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -26,6 +30,8 @@ public class MenuCadastroVacina extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtPaisOrigemVacina;
 	private JTextField txtNomePesquisador;
+	private JComboBox cboxEstagioPesquisa;
+	private DatePicker dataInicio;
 
 	/**
 	 * Launch the application.
@@ -54,11 +60,11 @@ public class MenuCadastroVacina extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Cadastro de Vac\u00EDnas");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 11, 414, 36);
-		contentPane.add(lblNewLabel);
+		JLabel lblTituloVacina = new JLabel("Cadastro de Vac\u00EDnas");
+		lblTituloVacina.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTituloVacina.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTituloVacina.setBounds(10, 11, 414, 36);
+		contentPane.add(lblTituloVacina);
 		
 		JLabel lblPaisOrigemVacina = new JLabel("Pa\u00EDs de Origem da Vacina: ");
 		lblPaisOrigemVacina.setBounds(12, 122, 171, 14);
@@ -77,7 +83,7 @@ public class MenuCadastroVacina extends JFrame {
         dateSettings.setAllowKeyboardEditing(false);
         dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
 
-        final DatePicker dataInicio = new DatePicker(dateSettings);
+        dataInicio = new DatePicker(dateSettings);
         dataInicio.getComponentToggleCalendarButton().addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         	}
@@ -85,7 +91,7 @@ public class MenuCadastroVacina extends JFrame {
         dataInicio.setBounds(10, 230, 183, 26);
         getContentPane().add(dataInicio);
 		
-		JComboBox cboxEstagioPesquisa = new JComboBox();
+		cboxEstagioPesquisa = new JComboBox();
 		cboxEstagioPesquisa.setModel(new DefaultComboBoxModel(new String[] {"1-inicial", "2-testes", "3-aplica\u00E7\u00E3o em massa"}));
 		cboxEstagioPesquisa.setBounds(9, 184, 147, 20);
 		contentPane.add(cboxEstagioPesquisa);
@@ -106,6 +112,15 @@ public class MenuCadastroVacina extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				VacinaVO vacinaVO = new VacinaVO();
+				vacinaVO.setPesquisadorVO(txtNomePesquisador.getText());
+				vacinaVO.setPaisOrigem(txtPaisOrigemVacina.getText());
+				String resultadoCombo = (String)cboxEstagioPesquisa.getSelectedItem();
+				vacinaVO.setEstagioPesquisa(resultadoCombo);
+				vacinaVO.setDataInicioPesquisa(dataInicio.getText());
+				
+				ControladorVacina controleVacina = new ControladorVacina();
+				controleVacina.cadastrarVacina(vacinaVO);
 			}
 		});
 		btnCadastrar.setBounds(195, 367, 98, 26);

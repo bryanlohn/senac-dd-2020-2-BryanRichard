@@ -9,12 +9,12 @@ public class VacinaVO {
 	private int idVacina;
 	private String dataInicioPesquisa;
 	private String paisOrigem;
-	private int estagioPesquisa;
-	private PesquisadorVO pesquisadorVO;
+	private String estagioPesquisa;
+	private String pesquisadorVO;
 	
 	//CONSTRUTORES
 	public VacinaVO(DateTimeFormatter dataFormatter, int idVacina, String dataInicioPesquisa, String paisOrigem,
-			int estagioPesquisa, PesquisadorVO pesquisadorVO) {
+			String estagioPesquisa, String pesquisadorVO) {
 		super();
 		this.dataFormatter = dataFormatter;
 		this.idVacina = idVacina;
@@ -52,17 +52,17 @@ public class VacinaVO {
 	public void setPaisOrigem(String paisOrigem) {
 		this.paisOrigem = paisOrigem;
 	}
-	public int getEstagioPesquisa() {
+	public String getEstagioPesquisa() {
 		return estagioPesquisa;
 	}
-	public void setEstagioPesquisa(int estagioPesquisa) {
+	public void setEstagioPesquisa(String estagioPesquisa) {
 		this.estagioPesquisa = estagioPesquisa;
 	}
-	public PesquisadorVO getPesquisadorVO() {
+	public String getPesquisadorVO() {
 		return pesquisadorVO;
 	}
-	public void setPesquisadorVO(PesquisadorVO pesquisadorVO) {
-		this.pesquisadorVO = pesquisadorVO;
+	public void setPesquisadorVO(String string) {
+		this.pesquisadorVO = string;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package br.sc.senac.model.bo;
 
+import javax.swing.JOptionPane;
+
 import br.sc.senac.model.dao.PesquisadorDAO;
 import br.sc.senac.model.dao.PublicoVoluntarioDAO;
 import br.sc.senac.model.vo.PesquisadorVO;
@@ -12,7 +14,7 @@ public class PublicoVoluntarioBO {
 	
 	public void cadastrarPublicoVoluntario(PublicoVoluntarioVO publicoVoluntarioVO) {
 		publicoVoluntarioDAO.inserir(publicoVoluntarioVO);
-		
+		JOptionPane.showMessageDialog(null, "Público ou Voluntário cadastrado com sucesso!");
 		
 		 }
 	}
