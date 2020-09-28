@@ -28,6 +28,7 @@ public class PesquisadorDAO {
 		PreparedStatement query = Banco.getPreparedStatementWithGeneratedKeys (conn, sql);
 		
 		try {
+			/*java.sql.Date date = java.sql.Date.valueOf(pesquisadorVO.getDataNascimento());*/
 			query.setString(1, pesquisadorVO.getNomeCompleto());
 			query.setString(2, pesquisadorVO.getCpf());
 			query.setString(3, pesquisadorVO.getDataNascimento());
@@ -86,6 +87,7 @@ public class PesquisadorDAO {
 		//Exemplo usando try-with-resources (similar ao bloco finally)
 		try (Connection conexao = Banco.getConnection();
 			PreparedStatement query = Banco.getPreparedStatement(conexao, sql);) {
+			/*java.sql.Date date = java.sql.Date.valueOf(pesquisadorVO.getDataNascimento());*/
 			query.setString(1, pesquisadorVO.getNomeCompleto());
 			query.setString(2, pesquisadorVO.getCpf());
 			query.setString(3, pesquisadorVO.getDataNascimento());

@@ -22,14 +22,16 @@ public class PublicoVoluntarioDAO {
 		String sql = "INSERT INTO PUBLICO_VOLUNTARIO (NOME, CPF, DATA_NASCIMENTO, SEXO, VOLUNTARIO) "
 				+ "VALUES (?,?,?,?,?)";
 		
+		
 		PreparedStatement query = Banco.getPreparedStatement (conn, sql);
 		
 		try {
+			/*java.sql.Date date = java.sql.Date.valueOf(publicoVoluntarioVO.getDataNascimento());*/
 			query.setString(1, publicoVoluntarioVO.getNomeCompleto());
 			query.setString(2, publicoVoluntarioVO.getCpf());
 			query.setString(3, publicoVoluntarioVO.getDataNascimento());
 			query.setString(4, publicoVoluntarioVO.getSexo());
-			query.setString(5, publicoVoluntarioVO.getVoluntario());
+			query.setBoolean(5, publicoVoluntarioVO.getVoluntario());
 			
 			int codigoRetorno = query.executeUpdate();
 			
@@ -77,11 +79,12 @@ public class PublicoVoluntarioDAO {
 		//Exemplo usando try-with-resources (similar ao bloco finally)
 		try (Connection conexao = Banco.getConnection();
 			PreparedStatement query = Banco.getPreparedStatement(conexao, sql);) {
+			/*java.sql.Date date = java.sql.Date.valueOf(publicoVoluntarioVO.getDataNascimento());*/
 			query.setString(1, publicoVoluntarioVO.getNomeCompleto());
 			query.setString(2, publicoVoluntarioVO.getCpf());
 			query.setString(3, publicoVoluntarioVO.getDataNascimento());
 			query.setString(4, publicoVoluntarioVO.getSexo());
-			query.setString(5, publicoVoluntarioVO.getVoluntario());
+			query.setBoolean(5, publicoVoluntarioVO.getVoluntario());
 			query.setInt(6, publicoVoluntarioVO.getId());
 			
 			int codigoRetorno = query.executeUpdate();
@@ -146,11 +149,15 @@ public class PublicoVoluntarioDAO {
 		publicoVoluntarioBuscado.setCpf(conjuntoResultante.getString("cpf"));
 		publicoVoluntarioBuscado.setDataNascimento(conjuntoResultante.getString("DATA_NASCIMENTO"));
 		publicoVoluntarioBuscado.setSexo(conjuntoResultante.getString("SEXO"));
-		publicoVoluntarioBuscado.setVoluntario(conjuntoResultante.getString("VOLUNTARIO"));
+		publicoVoluntarioBuscado.setVoluntario(conjuntoResultante.getBoolean("VOLUNTARIO"));
 		
 		/*SET NOME=?, CPF=?, DATA_NASCIMENTO=?, SEXO=?, VOLUNTARIO=? " */
 		
 		return publicoVoluntarioBuscado;
+	}
+
+	public boolean existeRegistroPorCpf(String cpf) {
+		return false;
 	}
 	
 }

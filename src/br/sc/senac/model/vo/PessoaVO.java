@@ -1,6 +1,7 @@
 package br.sc.senac.model.vo;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public abstract class PessoaVO {
 	
@@ -41,8 +42,8 @@ public abstract class PessoaVO {
 	public String getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setDataNascimento(String localDate) {
+		this.dataNascimento = localDate;
 	}
 	public String getCpf() {
 		return cpf;

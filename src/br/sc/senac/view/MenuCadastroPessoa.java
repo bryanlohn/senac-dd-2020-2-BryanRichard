@@ -12,6 +12,11 @@ import javax.swing.text.MaskFormatter;
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 
+import br.sc.senac.controller.ControladorPesquisador;
+import br.sc.senac.controller.ControladorPublicoVoluntario;
+import br.sc.senac.model.vo.PesquisadorVO;
+import br.sc.senac.model.vo.PublicoVoluntarioVO;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,12 +44,15 @@ public class MenuCadastroPessoa extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNome;
-	private JTextField txtCpf;
+	private JFormattedTextField txtCpf;
 	private JTextField txtDataNascimento;
 	private JTextField txtInstituicao;
+	private JRadioButton rdbtnSimVoluntario;
+	private JRadioButton rdbtnNaoVoluntario;
 	private JCheckBox checkPesquisador;
 	private JLabel lblInstituicao;
 	private String txtNomeV;
+	private DatePicker dataNascimento;
 
 	/**
 	 * Launch the application.
@@ -106,11 +114,11 @@ public class MenuCadastroPessoa extends JFrame {
 		lblSexo.setBounds(24, 202, 46, 14);
 		contentPane.add(lblSexo);
 		
-		JRadioButton rdbtnSimVoluntario = new JRadioButton("Sim");
+		rdbtnSimVoluntario = new JRadioButton("Sim");
 		rdbtnSimVoluntario.setBounds(23, 258, 60, 23);
 		contentPane.add(rdbtnSimVoluntario);
 		
-		JRadioButton rdbtnNaoVoluntario = new JRadioButton("N\u00E3o");
+		rdbtnNaoVoluntario = new JRadioButton("N\u00E3o");
 		rdbtnNaoVoluntario.setBounds(85, 258, 54, 23);
 		contentPane.add(rdbtnNaoVoluntario);
 		
@@ -130,9 +138,13 @@ public class MenuCadastroPessoa extends JFrame {
 				if(checkPesquisador.isSelected()) {
 					lblInstituicao.setEnabled(true);
 					txtInstituicao.setEnabled(true);
+					rdbtnSimVoluntario.setEnabled(false);
+					rdbtnNaoVoluntario.setEnabled(false);
 				} else {
 					lblInstituicao.setEnabled(false);
 					txtInstituicao.setEnabled(false);
+					rdbtnSimVoluntario.setEnabled(true);
+					rdbtnNaoVoluntario.setEnabled(true);
 				}
 			}
 		});
@@ -161,7 +173,7 @@ public class MenuCadastroPessoa extends JFrame {
 		MaskFormatter mascaraCpf;
         try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
-            JFormattedTextField txtCpf = new JFormattedTextField(mascaraCpf);
+            txtCpf = new JFormattedTextField(mascaraCpf);
             txtCpf.setText("");
             txtCpf.setBounds(23, 123, 200, 23);
             contentPane.add(txtCpf);
@@ -173,7 +185,7 @@ public class MenuCadastroPessoa extends JFrame {
         dateSettings.setAllowKeyboardEditing(false);
         dateSettings.setFormatForDatesCommonEra("dd/MM/yyyy");
 
-        final DatePicker dataNascimento = new DatePicker(dateSettings);
+        dataNascimento = new DatePicker(dateSettings);
         dataNascimento.getComponentToggleCalendarButton().setBounds(162, 0, 31, 23);
         dataNascimento.getComponentDateTextField().setBounds(0, 0, 159, 23);
         dataNascimento.getComponentToggleCalendarButton().addActionListener(new ActionListener() {
@@ -206,6 +218,40 @@ public class MenuCadastroPessoa extends JFrame {
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(checkPesquisador.isSelected()) {
+					PesquisadorVO pesquisadorVO = new PesquisadorVO();
+					pesquisadorVO.setNomeCompleto(txtNome.getText());
+					if(rdbtnMasculino.isSelected()) {
+						pesquisadorVO.setSexo("Masculino");
+					} else {
+						pesquisadorVO.setSexo("Feminino");
+					}
+					pesquisadorVO.setCpf(txtCpf.getText().replace(".",  "").replace("-", ""));
+					pesquisadorVO.setDataNascimento(dataNascimento.getText());
+					pesquisadorVO.setInstituicao(txtInstituicao.getText());
+					
+					ControladorPesquisador controladorPesquisador = new ControladorPesquisador();
+					controladorPesquisador.cadastrarPesquisador(pesquisadorVO);
+					
+				} else {
+					PublicoVoluntarioVO publicoVoluntarioVO = new PublicoVoluntarioVO();
+					publicoVoluntarioVO.setNomeCompleto(txtNome.getText());
+					if(rdbtnMasculino.isSelected()) {
+						publicoVoluntarioVO.setSexo("Masculino");
+					} else {
+						publicoVoluntarioVO.setSexo("Feminino");
+					}
+					publicoVoluntarioVO.setCpf(txtCpf.getText().replace(".",  "").replace("-", ""));
+					publicoVoluntarioVO.setDataNascimento(dataNascimento.getText());
+					if(rdbtnSimVoluntario.isSelected()) {
+						publicoVoluntarioVO.setVoluntario(true);
+					} else {
+						publicoVoluntarioVO.setVoluntario(false);
+					}
+					
+					ControladorPublicoVoluntario controladorPublicoVoluntario = new ControladorPublicoVoluntario();
+					controladorPublicoVoluntario.cadastrarPublicoVoluntario(publicoVoluntarioVO);
+			}
 			}
 		});
 		btnSalvar.setBounds(179, 385, 100, 33);

@@ -14,7 +14,7 @@ public class Menu {
         System.out.println("Digite NOME, CPF, DATA_NASCIMENTO, SEXO, INSTITUICAO");
         pesquisadorVO.setNomeCompleto(s.nextLine());
         pesquisadorVO.setCpf(s.nextLine());
-        pesquisadorVO.setDataNascimento(s.nextLine());
+        /*pesquisadorVO.setDataNascimento();*/
         pesquisadorVO.setSexo(s.nextLine());
         pesquisadorVO.setInstituicao(s.nextLine());
 

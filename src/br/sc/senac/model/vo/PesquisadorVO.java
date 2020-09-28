@@ -1,5 +1,6 @@
 package br.sc.senac.model.vo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class PesquisadorVO extends PessoaVO {
@@ -29,6 +30,12 @@ public class PesquisadorVO extends PessoaVO {
 
 	public void setInstituicao(String instituicao) {
 		this.instituicao = instituicao;
+	}
+
+
+	public void setDataNascimento(Date date) {
+		this.setDataNascimento(getDataNascimento());
+		
 	}
 	
 	

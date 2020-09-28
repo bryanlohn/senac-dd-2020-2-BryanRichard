@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class PublicoVoluntarioVO extends PessoaVO {
 	
-	private String voluntario;
+	private boolean voluntario;
 
 	public PublicoVoluntarioVO() {
 		super();
@@ -14,12 +14,12 @@ public class PublicoVoluntarioVO extends PessoaVO {
 		super(id, nomeCompleto, sexo, dataNascimento, cpf);
 	}
 
-	public String getVoluntario() {
+	public boolean getVoluntario() {
 		return voluntario;
 	}
 
-	public void setVoluntario(String voluntario) {
-		this.voluntario = voluntario;
+	public void setVoluntario(boolean b) {
+		this.voluntario = b;
 	}
 
 	
