@@ -25,13 +25,11 @@ create table PUBLICO_VOLUNTARIO (
 
 create table VACINA (
 	  IDVACINA int not null auto_increment
-	, IDPESQUISADOR int not null auto_increment
 	, DATA_INICIO_PESQUISA varchar(11) not null
 	, PAIS_ORIGEM varchar(100) not null
 	, ESTAGIO_PESQUISA varchar(40) not null
 	, NOME_PESQUISADOR varchar(100) not null
 	, primary key (IDVACINA)
-	, foreign key (IDPESQUISADOR) references PESQUISADOR (IDPESQUISADOR)
 );
 
-select * from Pesquisador;
+select * from PUBLICO_VOLUNTARIO;

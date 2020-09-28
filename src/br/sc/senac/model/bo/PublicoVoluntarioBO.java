@@ -1,5 +1,7 @@
 package br.sc.senac.model.bo;
 
+import java.awt.Event;
+
 import javax.swing.JOptionPane;
 
 import br.sc.senac.model.dao.PesquisadorDAO;
@@ -14,7 +16,11 @@ public class PublicoVoluntarioBO {
 	
 	public void cadastrarPublicoVoluntario(PublicoVoluntarioVO publicoVoluntarioVO) {
 		publicoVoluntarioDAO.inserir(publicoVoluntarioVO);
-		JOptionPane.showMessageDialog(null, "Público ou Voluntário cadastrado com sucesso!");
 		
+		if(publicoVoluntarioVO.getNomeCompleto().length() < 3) {
+			JOptionPane.showMessageDialog(null, "O campo nome não possui o mínimo de 4 caracteres.\n Por favor, insira um nome com mais de 3 caracteres.");
+		} else {
+		JOptionPane.showMessageDialog(null, "Público ou Voluntário cadastrado com sucesso!");
+		}
 		 }
 	}
