@@ -20,12 +20,12 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
+
 public class Principal {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JLabel lblNewLabel_2;
-	private JPasswordField passwordField;
+	private JLabel lblCadastroVacina;
+	public MenuCadastroVacina menuCadastroVacina;
 
 	/**
 	 * Launch the application.
@@ -66,33 +66,13 @@ public class Principal {
 		lblNewLabel.setBounds(209, 11, 243, 45);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnEntrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				/*TESTE DE BOTÃO */
-				JOptionPane.showMessageDialog(null, "Este menu ainda não está pronto!");
-			}
-		});
-		btnEntrar.setBounds(33, 194, 105, 31);
-		frame.getContentPane().add(btnEntrar);
+		JLabel lblCadastroPessoa = new JLabel("Cadastro de Pessoa:");
+		lblCadastroPessoa.setBounds(34, 100, 105, 14);
+		frame.getContentPane().add(lblCadastroPessoa);
 		
-		textField = new JTextField();
-		textField.setBounds(33, 79, 105, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("Login: ");
-		lblNewLabel_1.setBounds(33, 54, 46, 14);
-		frame.getContentPane().add(lblNewLabel_1);
-		
-		lblNewLabel_2 = new JLabel("Senha: ");
-		lblNewLabel_2.setBounds(33, 112, 46, 14);
-		frame.getContentPane().add(lblNewLabel_2);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(33, 148, 105, 20);
-		frame.getContentPane().add(passwordField);
+		lblCadastroVacina = new JLabel("Cadastro de Vacina: ");
+		lblCadastroVacina.setBounds(34, 158, 105, 14);
+		frame.getContentPane().add(lblCadastroVacina);
 		
 		JLabel lblImgSenac = new JLabel("");
 		lblImgSenac.setBackground(new Color(255, 255, 255));
@@ -100,5 +80,24 @@ public class Principal {
 		lblImgSenac.setIcon(new ImageIcon(img));
 		lblImgSenac.setBounds(322, 198, 265, 172);
 		frame.getContentPane().add(lblImgSenac);
+		
+		JButton btnCadastroDePessoa = new JButton("Cadastro de Pessoa");
+		btnCadastroDePessoa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+			}
+
+		});
+		btnCadastroDePessoa.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnCadastroDePessoa.setBounds(34, 116, 143, 31);
+		frame.getContentPane().add(btnCadastroDePessoa);
+		
+		JButton btnCadastroDeVacina = new JButton("Cadastro de Vacina");
+		btnCadastroDeVacina.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnCadastroDeVacina.setBounds(34, 174, 143, 31);
+		frame.getContentPane().add(btnCadastroDeVacina);
 	}
+
+
 }

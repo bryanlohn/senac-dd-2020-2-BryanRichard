@@ -17,6 +17,7 @@ import br.sc.senac.controller.ControladorPublicoVoluntario;
 import br.sc.senac.model.vo.PesquisadorVO;
 import br.sc.senac.model.vo.PublicoVoluntarioVO;
 
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
